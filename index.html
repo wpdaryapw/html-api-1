@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebStorage Table</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="getStorage()">
+
+    <h2>WebStorage Table</h2>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Data</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+
+    <div>
+        <label for="newData">Новая запись: </label>
+        <input type="text" id="newData" placeholder="Введите данные">
+        <button onclick="saveItem('newKey', document.getElementById('newData').value)">Сохранить</button>
+    </div>
+
+    <div>
+        <button onclick="clearStorage()">Очистить хранилище</button>
+    </div>
+
+    <div>
+        <button onclick="switchToLocal()">Локальное хранилище</button>
+        <button onclick="switchToSession()">Сессионное хранилище</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
