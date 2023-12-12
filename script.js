@@ -33,9 +33,11 @@ function updateTable() {
             var deleteCell = document.createElement('td');
             var deleteButton = document.createElement('span');
             deleteButton.textContent = 'X';
-            deleteButton.onclick = function() {
-                deleteItem(key);
-            };
+            deleteButton.onclick = (function(keyCopy) {
+                return function() {
+                    deleteItem(keyCopy);
+                };
+            })(key);
 
             deleteCell.appendChild(deleteButton);
             row.appendChild(idCell);
@@ -47,9 +49,11 @@ function updateTable() {
     }
 }
 
-function saveItem(key, value) {
+function saveItem(value) {
+    var key = 'item_' + new Date().getTime();
     currentStorage.setItem(key, value);
     updateTable();
+    document.getElementById('newData').value = ''; 
 }
 
 function deleteItem(key) {
